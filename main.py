@@ -1,3 +1,21 @@
+import sys
+from PyQt5.QtWidgets import *
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setGeometry(150, 250, 300, 450)
+        self.setWindowTitle("This our Window's Title")
+        self.show()
+
+
+App = QApplication(sys.argv)
+window = Window()
+sys.exit(App.exec_())
+
+
+'''
 englishToMorseDict = {
 	'a': "*-",
 	'b': "-***",
@@ -36,8 +54,9 @@ englishToMorseDict = {
 	'9': "----*",
 	'0': "-----"
 }
+
 def englishToMorse(stringInput):
-	translateString = "";
+	translateString = ""
 	print("This is the stringInput: " + stringInput)
 	for x in range(0, len(stringInput)):
 		print(stringInput[x])
@@ -45,6 +64,7 @@ def englishToMorse(stringInput):
 		print(englishToMorseDict[stringInput[x].lower()])
 		translateString+=englishToMorseDict[stringInput[x].lower()] + " "
 	return translateString
-test = "hello";
+test = "hello"
 translated = englishToMorse(test)
 print(translated)
+'''
