@@ -13,6 +13,8 @@ class Window(QWidget):
         self.UI()
 
     def UI(self):
+        self.playerOneScore = 0
+        self.playerTwoScore = 0
         self.leftImage = QLabel(self)
         self.leftImage.setPixmap(QPixmap('images/rock.jpg'))
         self.leftImage.move(50, 150)
@@ -34,7 +36,9 @@ class Window(QWidget):
         self.timer=QTimer()
         self.timer.setInterval(200)
         self.timer.timeout.connect(self.changeSigns)
-
+        self.playerOneSign = 0
+        self.playerTwoSign = 0
+        self.gameResult()
         self.show()
 
     def startGame(self):
@@ -44,26 +48,64 @@ class Window(QWidget):
     def stopGame(self):
         print("Stop")
         self.timer.stop()
+        self.gameResult()
+        self.messageBox()
+
+    def gameResult(self):
+        #print("hello")
+
+        if (self.playerOneSign == 1):
+            if (self.playerTwoSign == 2):
+                self.playerTwoScore = self.playerTwoScore + 1
+            else:
+                self.playerOneScore = self.playerOneScore + 1
+        if (self.playerOneSign == 2):
+            if (self.playerTwoSign == 1):
+                self.playerTwoScore = self.playerTwoScore + 1
+            else:
+                self.playerOneScore = self.playerOneScore + 1
+        if (self.playerOneSign == 3):
+            if (self.playerTwoSign == 1):
+                self.playerTwoScore = self.playerTwoScore + 1
+            elif (self.playerTwoSign == 2):
+                self.playerOneScore = self.playerOneScore + 1
+
+
+        print("Stop numbers. Player One: " + str(self.playerOneSign) + " Player Two: " + str(self.playerTwoSign))
+        print("Scores. Player One: " + str(self.playerOneScore) + " Player Two: " + str(self.playerTwoScore))
+        self.leftScoreText.setText("Player 1: " + str(self.playerOneScore))
+        self.rightScoreText.setText("Player 2: " + str(self.playerTwoScore))
+
+    def messageBox(self):
+        if (self.playerOneScore == 5 or self.playerTwoScore == 5):
+            resultMessage = ""
+            if (self.playerOneScore > self.playerTwoScore):
+                resultMessage = "Player One Wins"
+            else:
+                resultMessage = "Player Two Wins"
+            mbox=QMessageBox.information(self,"Game Result", resultMessage)
+            sys.exit()
+
 
     def changeSigns(self):
         print("testing")
         # 1 is paper, 2 is scissors, 3 is rock
-        playerOneSign = random.randint(1,3)
-        print(playerOneSign)
-        playerTwoSign = random.randint(1,3)
-        print(playerTwoSign)
-        if (playerOneSign == 1):
+        self.playerOneSign = random.randint(1,3)
+        print(self.playerOneSign)
+        self.playerTwoSign = random.randint(1,3)
+        print(self.playerTwoSign)
+        if (self.playerOneSign == 1):
             self.leftImage.setPixmap(QPixmap('images/paper.jpg'))
-        elif (playerOneSign == 2):
+        elif (self.playerOneSign == 2):
             self.leftImage.setPixmap(QPixmap('images/scissors.jpg'))
         else:
             self.leftImage.setPixmap(QPixmap('images/paper.jpg'))
-        if (playerTwoSign == 1):
+        if (self.playerTwoSign == 1):
             self.rightImage.setPixmap(QPixmap('images/paper.jpg'))
-        elif (playerTwoSign == 2):
+        elif (self.playerTwoSign == 2):
             self.rightImage.setPixmap(QPixmap('images/scissors.jpg'))
         else:
-            self.rightImage.setPixmap(QPixmap('images/paper.jpg'))
+            self.rightImage.setPixmap(QPixmap('images/rock.jpg'))
 
 
 def main():

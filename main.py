@@ -1,18 +1,33 @@
 import sys
+import random
 from PyQt5.QtWidgets import *
+
+
 
 
 class Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(150, 250, 300, 450)
-        self.setWindowTitle("This our Window's Title")
+        self.setWindowTitle("Morse Code Translator")
+        self.setGeometry(250, 150, 800, 800)
+        self.UI()
+
+    def UI(self):
+
         self.show()
 
 
-App = QApplication(sys.argv)
-window = Window()
-sys.exit(App.exec_())
+
+def main():
+    App = QApplication(sys.argv)
+    window = Window()
+    #window.start() # this is used to have the timer start immediately upon opening
+    sys.exit(App.exec_())
+
+
+if __name__ == '__main__':
+    main()
+
 
 
 '''
