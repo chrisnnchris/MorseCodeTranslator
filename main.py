@@ -48,7 +48,7 @@ def englishToMorse(stringInput):
         print(stringInput[x])
         print("translated")
         print(englishToMorseDict[stringInput[x].lower()])
-        translateString += englishToMorseDict[stringInput[x].lower()] + " "
+        translateString += englishToMorseDict[stringInput[x].lower()] + "  "
     return translateString
 
 '''
