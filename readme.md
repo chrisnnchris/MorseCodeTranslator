@@ -8,4 +8,4 @@ For application: Download pythonMorseCodeTranslator.exe for application
 
 
 For images or download reservations: See below.
-![image](morseTanslatorImage.jpg?raw=true "Morse code translator image")
+![image](morseTanslatorImage.jpg "Morse code translator image")
