@@ -37,7 +37,8 @@ englishToMorseDict = {
     '7': "--***",
     '8': "---**",
     '9': "----*",
-    '0': "-----"
+    '0': "-----",
+    " ": " "
 }
 
 
@@ -70,11 +71,13 @@ class Window(QWidget):
         self.inputText = QTextEdit()
         self.translateButton = QPushButton("English to Morse")
         self.outputText = QTextEdit()
+        self.instructionLabel = QLabel("Letters, numbers, and spaces only. Morse code does not have special characters such as $.")
 
         hbox.addStretch()
         hbox.addWidget(self.translateButton)
         hbox.addStretch()
 
+        vbox.addWidget(self.instructionLabel)
         vbox.addWidget(self.inputText)
         vbox.addLayout(hbox)
         vbox.addWidget(self.outputText)
