@@ -7,5 +7,5 @@ For application: Download pythonMorseCodeTranslator.exe for application
 6) If unwilling to download or lacking bypass procedures, refer to image below.
 
 
-For images or download reservations: See below.
+For images or download reservations: See below.\
 ![image](morseTanslatorImage.JPG)
